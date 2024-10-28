@@ -17,8 +17,10 @@ public class FileUtil {
     String fileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();
     Path uploadPath = Paths.get(uploadDir);
 
-    if (!Files.exists(uploadPath)) {
-      Files.createDirectories(uploadPath);
+    File files = new File(uploadDir);
+
+    if (files.exists() == false) {
+      files.mkdirs();
     }
 
     Path filePath = uploadPath.resolve(fileName);

@@ -85,7 +85,7 @@ class MoneyTabFragment : Fragment() {
                 }
 
                 override fun onFailure(call: Call<List<MoneyData>>, t: Throwable) {
-                    TODO("Not yet implemented")
+                    // 에러
                 }
             })
 
@@ -114,7 +114,7 @@ class MoneyTabFragment : Fragment() {
                                 }
 
                                 override fun onFailure(call: Call<MoneyData>, t: Throwable) {
-                                    TODO("Not yet implemented")
+                                    // 에러
                                 }
                             })// enqueue
                     } // onclick
@@ -171,7 +171,7 @@ class MoneyTabFragment : Fragment() {
                         }
 
                         override fun onFailure(call: Call<List<PayData>>, t: Throwable) {
-                            TODO("Not yet implemented")
+                            // 에러
                         }
                     })
             }

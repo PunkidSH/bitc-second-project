@@ -293,40 +293,51 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         // 모든 마커 불러오기
         SubClient.retrofit.findAllMap(tId).enqueue(object : retrofit2.Callback<List<Maps>> {
             override fun onResponse(call: Call<List<Maps>>, response: Response<List<Maps>>) {
+                // API 호출 결과를 로그로 출력
+                Log.d("allData", "${response.body()}")
+
                 response.body()?.let { markers ->
-                    if (this@MapsActivity::googleMap.isInitialized) {
-                        // LatLngBounds.Builder 초기화
-                        val builder = LatLngBounds.Builder()
-                        Log.d("allData", "${response.body()}")
+                    if (markers.isNotEmpty()) { // 마커가 비어 있지 않은 경우에만 진행
+                        if (this@MapsActivity::googleMap.isInitialized) {
+                            // LatLngBounds.Builder 초기화
+                            val builder = LatLngBounds.Builder()
 
-                        // 지도에 모든 마커 추가
-                        for (marker in markers) {
-                            val latLng =
-                                LatLng(marker.latitude.toDouble(), marker.longitude.toDouble())
-                            val markerOptions = MarkerOptions()
-                                .position(latLng)
-                                .icon(getMarkerIconByColor(marker.pinColor))
+                            // 지도에 모든 마커 추가
+                            for (marker in markers) {
+                                val latLng = LatLng(marker.latitude.toDouble(), marker.longitude.toDouble())
+                                val markerOptions = MarkerOptions()
+                                    .position(latLng)
+                                    .icon(getMarkerIconByColor(marker.pinColor))
 
-                            val googleMapMarker = googleMap.addMarker(markerOptions)
+                                val googleMapMarker = googleMap.addMarker(markerOptions)
 
-                            markersMap[googleMapMarker] = marker
+                                markersMap[googleMapMarker] = marker
 
-                            // LatLngBounds에 마커 좌표 추가
-                            builder.include(latLng)
+                                // LatLngBounds에 마커 좌표 추가
+                                builder.include(latLng)
+                            }
+
+                            // LatLngBounds 빌드
+                            val bounds = builder.build()
+                            // 지도에서 마커들이 모두 보이도록 카메라 조정
+                            val cameraUpdate = CameraUpdateFactory.newLatLngBounds(bounds, 100) // 100은 경계에 여유를 주기 위한 값
+                            googleMap.moveCamera(cameraUpdate)
+                        } else {
+                            Log.e("MapsActivity", "No markers found to display on the map.")
                         }
-
-                        // LatLngBounds 빌드
-                        val bounds = builder.build()
-                        // 지도에서 마커들이 모두 보이도록 카메라 조정
-                        val cameraUpdate =
-                            CameraUpdateFactory.newLatLngBounds(bounds, 100) // 100은 경계에 여유를 주기 위한 값
-                        googleMap.moveCamera(cameraUpdate)
+                    } else {
+                        // 마커가 없을 때의 처리
+                        Log.e("MapsActivity", "No markers found to display on the map.")
                     }
+                } ?: run {
+                    Log.e("MapsActivity", "Response body is null.")
                 }
             }
+
             override fun onFailure(call: Call<List<Maps>>, t: Throwable) {
+                Log.e("MapsActivity", "Failed to fetch markers: ${t.message}")
             }
-        })  //findAllMap
+        })  // findAllMap
 
         // 저장된 핀 선택 시 저장된 정보 노출
         googleMap.setOnMarkerClickListener { marker ->

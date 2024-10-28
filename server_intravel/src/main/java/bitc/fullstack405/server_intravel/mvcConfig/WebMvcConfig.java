@@ -9,7 +9,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class WebMvcConfig implements WebMvcConfigurer {
 
   private String conPath = "/photos/**";
-  private String resPath = "file:///C:/fullstack405/kotlin/teamProjectImg/";
+  private String resPath = "file:///home/ec2-user/prj2img/";
 
   @Override
   public void addCorsMappings(CorsRegistry registry) {

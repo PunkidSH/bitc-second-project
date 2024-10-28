@@ -1,8 +1,10 @@
 package com.example.intravel.fragments
 
+import android.Manifest
 import android.app.AlertDialog
 import android.content.ContentValues
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
@@ -14,6 +16,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.GridLayoutManager
@@ -31,6 +35,8 @@ import java.io.File
 import java.io.OutputStream
 
 class GalleryFragment : Fragment() {
+
+  private val PERMISSION_REQUEST_CODE = 1001
 
   lateinit var binding: FragmentGalleryBinding
   lateinit var galleryAdapter: GalleryAdapter
@@ -60,6 +66,8 @@ class GalleryFragment : Fragment() {
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
+
+    checkPermissions()
 
     ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
       val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -138,9 +146,14 @@ class GalleryFragment : Fragment() {
   }
 
   private fun uploadPhoto(photoUri: Uri) {
-    val photoFile = File(getRealPathFromURI(photoUri))
-    val requestFile = photoFile.asRequestBody("image/jpeg".toMediaTypeOrNull())
-    val body = MultipartBody.Part.createFormData("photo", photoFile.name, requestFile)
+    val inputStream = requireActivity().contentResolver.openInputStream(photoUri)
+    val file = File(requireContext().cacheDir, "temp_image.jpg")
+    file.outputStream().use { outputStream ->
+      inputStream?.copyTo(outputStream)
+    }
+
+    val requestFile = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
+    val body = MultipartBody.Part.createFormData("photo", file.name, requestFile)
 
     val call = Client.photoRetrofit.savePhoto(tId, body)
     call.enqueue(object : Callback<PhotoData> {
@@ -150,14 +163,13 @@ class GalleryFragment : Fragment() {
             galleryAdapter.photoList.add(newPhoto)
             galleryAdapter.notifyDataSetChanged()
           }
-        }
-        else {
-          // 실패 처리
+        } else {
+          Toast.makeText(requireContext(), "Upload failed", Toast.LENGTH_SHORT).show()
         }
       }
 
       override fun onFailure(call: Call<PhotoData>, t: Throwable) {
-        // 에러 처리
+        Toast.makeText(requireContext(), "Error: ${t.message}", Toast.LENGTH_SHORT).show()
       }
     })
   }
@@ -195,4 +207,14 @@ class GalleryFragment : Fragment() {
       }
     })
   }
+
+  private fun checkPermissions() {
+    val cameraPermission = ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA)
+    val storagePermission = ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE)
+
+    if (cameraPermission != PackageManager.PERMISSION_GRANTED || storagePermission != PackageManager.PERMISSION_GRANTED) {
+      ActivityCompat.requestPermissions(requireActivity(), arrayOf(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE), PERMISSION_REQUEST_CODE)
+    }
+  }
+
 }

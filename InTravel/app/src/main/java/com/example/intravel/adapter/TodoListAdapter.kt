@@ -30,8 +30,6 @@ class TodoListAdapter(var todoList: MutableList<TodoList>):RecyclerView.Adapter<
         init{
 
         }
-
-
     }
 
     // 추가

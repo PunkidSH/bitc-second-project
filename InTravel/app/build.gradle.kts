@@ -10,7 +10,7 @@ android {
 
   defaultConfig {
     applicationId = "com.example.intravel"
-    minSdk = 34
+    minSdk = 26
     targetSdk = 34
     versionCode = 1
     versionName = "1.0"
@@ -57,7 +57,7 @@ dependencies {
 
   // Google Map
   implementation ("com.google.android.gms:play-services-maps:17.0.0")
-  implementation ("com.google.android.gms:play-services-location:17.0.0")
+  implementation ("com.google.android.gms:play-services-location:17.1.0")
 
   // Places API
   implementation ("com.google.android.libraries.places:places:2.5.0")
