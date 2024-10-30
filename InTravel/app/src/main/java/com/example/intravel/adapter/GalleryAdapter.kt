@@ -52,7 +52,7 @@ class GalleryAdapter(var photoList: MutableList<PhotoData>): RecyclerView.Adapte
   override fun onBindViewHolder(holder: GalleryAdapter.Holder, position: Int) {
     val photo = photoList[position]
 
-    url = "http://3.34.124.123:8082/photos/"
+    url = "http://15.164.61.252:8082/photos/"
     fileName = photo.fileName
 
     Glide.with(holder.binding.root.context)

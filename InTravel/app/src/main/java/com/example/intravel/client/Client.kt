@@ -7,13 +7,13 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object Client {
   val retrofit: TravelInterface = Retrofit.Builder()
-    .baseUrl("http://3.34.124.123:8082/travel/")
+    .baseUrl("http://15.164.61.252:8082/travel/")
     .addConverterFactory(GsonConverterFactory.create())
     .build()
     .create(TravelInterface::class.java)
 
   val photoRetrofit: PhotoInterface = Retrofit.Builder()
-    .baseUrl("http://3.34.124.123:8082/photo/")
+    .baseUrl("http://15.164.61.252:8082/photo/")
     .addConverterFactory(GsonConverterFactory.create())
     .build()
     .create(PhotoInterface::class.java)
