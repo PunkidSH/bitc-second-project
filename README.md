@@ -2,17 +2,20 @@
 
 
 # 프로젝트
-> 개발기간 : 2024.10.02 ~ 2024.10.19
+> 개발기간 : 2024.09.03 ~ 2024.09.13
 
 # 개발인원
 > 5인
 
 # 담당역할
 > 팀장<br>
+팀 역할 분배<br>
 팀 기초 개발환경 세팅 및 배포<br>
-ERD 기초설계<br>
-React Web 연동 Back-End 구축 <br>
-React Front-End 참석자 관리 및 각종 검색기능 제작<br>
+ERD 기초설계 설계/구축 및 관리<br>
+<br>
+Back-End 관리<br>
+사진/앨범 관련 기능 구현<br>
+Google Map API 사용<br>
 
 # Skills
 >![InteliJ](https://img.shields.io/badge/IntelliJ_IDEA-000000.svg?style=for-the-badge&logo=intellij-idea&logoColor=white)
@@ -35,7 +38,7 @@ React Front-End 참석자 관리 및 각종 검색기능 제작<br>
 </details>
 <details>
 <summary>시연 영상</summary>
-<video src="inTravelVideo.mp4">
+<video src="inTravelVideo.mp4" controls>
 </details>
 
 # 주요기능
