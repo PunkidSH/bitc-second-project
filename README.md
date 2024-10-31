@@ -37,7 +37,7 @@ Google Map API 사용<br>
 </details>
 <details>
 <summary>시연 영상</summary>
-<video src="Video inTravel.mp4" controls>
+![Video](https://onedrive.live.com/?cid=C40ED04645C3F727&id=C40ED04645C3F727%21106&parId=root&o=OneUp)
 </details>
 
 # 주요기능
