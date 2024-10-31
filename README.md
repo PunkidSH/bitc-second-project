@@ -33,18 +33,16 @@ React Front-End 참석자 관리 및 각종 검색기능 제작<br>
 <summary>USE-CASE</summary>
 <img src="UseCase.png" alt="USE-CASE" />
 </details>
-
-
 <details>
 <summary>시연 영상</summary>
 <video src="inTravelVideo.mp4">
 </details>
 
 # 주요기능
-> 여행 정보 생성
-> 여행 D-Day 기능
-> 할 일(To Do List) 추가, 수정, 삭제, 중요체크, 완료체크
-> 메모 작성 가능
-> 예산 관리
-> 사진 촬영 후 앨범 기능
-> 지도 핀 마커 활용 기능
+> 여행 정보 생성<br>
+> 여행 D-Day 기능<br>
+> 할 일(To Do List) 추가, 수정, 삭제, 중요체크, 완료체크<br>
+> 메모 작성 가능<br>
+> 예산 관리<br>
+> 사진 촬영 후 앨범 기능<br>
+> 지도 핀 마커 활용 기능<br>
