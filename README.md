@@ -37,7 +37,7 @@ Google Map API 사용<br>
 </details>
 <details>
 <summary>시연 영상</summary>
-![영상](https://1drv.ms/v/s!Aif3w0VG0A7EaoBf3QjfXx4c5TQ)
+![영상](https://youtu.be/qzFW9u_JGTo)
 </details>
 
 # 주요기능
