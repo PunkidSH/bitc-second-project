@@ -12,7 +12,6 @@
 팀 역할 분배<br>
 팀 기초 개발환경 세팅 및 배포<br>
 ERD 기초설계 설계/구축 및 관리<br>
-<br>
 Back-End 관리<br>
 사진/앨범 관련 기능 구현<br>
 Google Map API 사용<br>
@@ -30,15 +29,15 @@ Google Map API 사용<br>
 # ERD & USE-CASE
 <details>
 <summary>ERD</summary>
-<img src="ERD.png" alt="ERD" />
+<img src="ERD inTravel.png" alt="ERD" />
 </details>
 <details>
 <summary>USE-CASE</summary>
-<img src="UseCase.png" alt="USE-CASE" />
+<img src="UseCase inTravel.png" alt="USE-CASE" />
 </details>
 <details>
 <summary>시연 영상</summary>
-<video src="inTravelVideo.mp4" controls>
+<video src="Video inTravel.mp4" controls>
 </details>
 
 # 주요기능
