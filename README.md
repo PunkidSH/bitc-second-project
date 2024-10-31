@@ -1,4 +1,4 @@
-# QR Event Check Manager
+# inTravel
 
 
 # 프로젝트
@@ -37,7 +37,7 @@ Google Map API 사용<br>
 </details>
 <details>
 <summary>시연 영상</summary>
-[![영상](https://github.com/PunkidSH/bitc-second-project/raw/main/videoThum.png)](https://onedrive.live.com/?cid=C40ED04645C3F727&id=C40ED04645C3F727%21106&parId=root&o=OneUp)
+![영상](https://1drv.ms/v/s!Aif3w0VG0A7EaoBf3QjfXx4c5TQ)
 </details>
 
 # 주요기능
